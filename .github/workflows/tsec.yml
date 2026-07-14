@@ -1,0 +1,9 @@
+name: test-secret
+
+on: workflow_dispatch
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ secrets.BASE_URL }}
