@@ -1,5 +1,7 @@
 name: hqy-checkin
 on:
+  push:
+    branches: [main]
   schedule:
     - cron: '30 0 * * *'
 jobs:
