@@ -1,11 +1,10 @@
-name: hqy-sch
-
+name: cron-trigger
 on:
   schedule:
     - cron: '30 0 * * *'
-
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - run: curl -s -X POST ${{ secrets.BASE_URL }}/api/user/checkin -H "Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}" -H "New-Api-User: ${{ secrets.USER_ID }}" -H "Content-Type: application/json"
+      - run: |
+          curl -s -X POST ${{ secrets.BASE_URL }}/api/user/checkin -H "Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}" -H "New-Api-User: ${{ secrets.USER_ID }}" -H "Content-Type: application/json"
