@@ -6,4 +6,5 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - run: curl -sk -A "Mozilla/5.0" -X POST ${{ secrets.BASE_URL }}/api/user/checkin -H "Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}" -H "New-Api-User: ${{ secrets.USER_ID }}" -H "Content-Type: application/json"
+      - run: |
+          curl -sk -A "Mozilla/5.0" -X POST ${{ secrets.BASE_URL }}/api/user/checkin -H "Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}" -H "New-Api-User: ${{ secrets.USER_ID }}" -H "Content-Type: application/json"
