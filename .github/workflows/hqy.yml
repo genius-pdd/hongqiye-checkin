@@ -1,6 +1,5 @@
 name: hqy-checkin
 on:
-  workflow_dispatch:
   schedule:
     - cron: '30 0 * * *'
 jobs:
