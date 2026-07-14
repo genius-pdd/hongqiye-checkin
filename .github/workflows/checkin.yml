@@ -1,4 +1,6 @@
 name: auto-checkin
+name: auto-checkin
+
 on:
   workflow_dispatch:
   schedule:
