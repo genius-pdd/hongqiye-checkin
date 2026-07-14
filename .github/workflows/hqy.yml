@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          curl -sk -H "Accept: application/json" -H "Referer: ${{ secrets.BASE_URL }}/console/personal" -X POST ${{ secrets.BASE_URL }}/api/user/checkin -H "Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}" -H "New-Api-User: ${{ secrets.USER_ID }}" -H "Content-Type: application/json"
+          curl -sk -v -H "Accept: application/json" -H "Origin: ${{ secrets.BASE_URL }}" -H "Referer: ${{ secrets.BASE_URL }}/console/personal" -X POST "${{ secrets.BASE_URL }}/api/user/checkin" -H "Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}" -H "New-Api-User: ${{ secrets.USER_ID }}" -H "Content-Type: application/json" 2>&1 | tail -20
