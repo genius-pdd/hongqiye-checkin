@@ -1,9 +1,17 @@
 name: auto-checkin
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 0 * * *'
+
+env:
+  BASE_URL: ${{ secrets.BASE_URL }}
+  ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+  USER_ID: ${{ secrets.USER_ID }}
 
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - run: echo hello
+      - run: curl -s -X POST $BASE_URL/api/user/checkin -H "Authorization: Bearer $ACCESS_TOKEN" -H "New-Api-User: $USER_ID" -H "Content-Type: application/json"
