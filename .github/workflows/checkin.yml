@@ -1,10 +1,6 @@
 name: auto-checkin
-name: auto-checkin
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: '30 0 * * *'
+on: workflow_dispatch
 
 jobs:
   run:
