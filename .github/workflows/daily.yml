@@ -9,4 +9,15 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - run: curl -s -X POST ${{ secrets.BASE_URL }}/api/user/checkin -H "Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}" -H "New-Api-User: ${{ secrets.USER_ID }}" -H "Content-Type: application/json"
+      - run: |
+          RESULT=$(curl -s -X POST ${{ secrets.BASE_URL }}/api/user/checkin \
+            -H "Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}" \
+            -H "New-Api-User: ${{ secrets.USER_ID }}" \
+            -H "Content-Type: application/json")
+          echo "$RESULT"
+          if echo "$RESULT" | grep -q "今日已签到\|success.*true"; then
+            echo "✅ OK"
+          else
+            echo "❌ FAIL"
+            exit 1
+          fi
